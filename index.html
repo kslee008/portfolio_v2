@@ -1,46 +1,687 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio | Your Name here</title>
 
     <!-- ! Apply fonts imported from Google Fonts -->
-    <!-- Insert code here -->
+    <!-- Documentation: https://developers.google.com/fonts/docs/getting_started -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
 
     <!-- ! Internat styes -->
     <style>
-        /* insert styles here */
-    </style>
-  </head>
+        /* CSS Varible for easy theme adjustment */
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #6c757d;
+            --accent-color: #4caf50;
+            --light-bg-color: #f8f9fa;
+            --white: #ffffff;
+            --bkgnd: #fff;
+            --border-radius: 0.5rem;
+            --transpition-speed: 0.3s;
+            --project-image-text: rgba(255, 255, 255, 0.70);
 
-  <body>
+            font-size: 100%;
+
+        }
+
+        /* Reset the page styles(margins an paddings) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            /* fallback font is the browser's system font */
+            color: var(--primary-color);
+            /* target font color */
+            background-color: var(--bkgnd);
+            /* target background color */
+            line-height: 1.6rem;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Reusable components --- */
+        .section-paadding {
+            padding: 5rem 1.25rem;
+            /* top & bottom, left & right */
+            max-width: 75rem;
+            /* maximum stretch accross screen: 1200px */
+            margin: 0 auto;
+            /* Center the content */
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3.75rem;
+            color: var(--primary-color);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.9735rem 1.25rem;
+            /* Converted from 15px (top,bottom) 20px (left,right) */
+            background-color: var(--white);
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+            /* Subtle shadow for depth */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            margin: 0 0.9375rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color var(--transpition-speed);
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- 1. Landing Section --- */
+        #landing {
+            min-height: 80dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--light-bg-color);
+            border-radius: 0 0 2rem 2rem;
+        }
+
+        .landing-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 2.5rem;
+        }
+
+        .profile-pic-large {
+            width: 9.375rem;
+            height: 9.375rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 0.25rem solid var(--primary-color);
+        }
+
+        .landing-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .landing-content p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.25rem;
+        }
+
+        .landing-content p:first-of-type {
+            font-size: 1.5rem;
+        }
+
+        .landing-cntent p:last-of-type {
+            font-size: 1rem;
+        }
+
+        .cta-group a {
+            display: inline-block;
+            padding: 0.625rem 1.5625rem;
+            border: 0.1125rem solid var(--primary-color);
+            margin: 0.625rem;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all var(--transpition-speed);
+            border: 0.125rem solid var(--primary-color);
+        }
+
+        .cta-group a:first-child {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .cta-group a:first-child:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .cta-group a:last-child {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .cta-group a:last-child:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--white);
+            box-shadow: 0 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- 2. About Section --- */
+        #about {
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .about-imgage {
+            flex: 1;
+        }
+
+        .about-imgeg img {
+            background: #000;
+            width: 100%;
+            max-width: 18.75rem;
+            border-radius: var(--boarder-radius)
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text h3 {
+            font-size: 1.2rem;
+            font-weight: light;
+            font-style: italic;
+            margin-bottom: 0.9375rem;
+        }
+
+        .info-card-container {
+            display: flex;
+            gap: 1.25rem;
+            margin: 1.5625rem 0;
+
+        }
+
+        .info-card {
+            flex: 1;
+            padding: 1.25rem;
+            border: 0.06rem solid #ddd;
+            border-radius: var(--boarder-radius);
+            text-align: center;
+            background-color: var(--light-bg-color);
+            box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h4 {
+            font-size: 1rem;
+            color: var(--accent-color);
+            margin-bottom: 0.3125rem;
+        }
+
+        /* --- Experience Section --- */
+        #experience {
+            background-color: var(--light-bg-color);
+
+        }
+
+        .experience-container {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+
+        }
+
+        .experience-card {
+            flex: 1;
+            min-width: 18.75rem;
+            padding: 1.875rem;
+            background-color: var(--white);
+            border-radius: var(--boarder-radius);
+            box-shadow: 0 0.25rem 0 0.625rem rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .experience-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5625rem;
+            border-bottom: 0.0625rem solid var(--accent-color);
+            display: inline-block;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            text-align: left;
+            margin-top: 0.9375rem;
+
+        }
+
+        .skill-list li {
+            display: flex;
+            width: calc(50% - 0.625rem);
+            margin-bottom: 0.9375rem;
+            font-weight: 400;
+            align-items: center;
+        }
+
+        .skill-list li::before {
+            content: ".";
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+
+        }
+
+        /* --- Project section ---*/
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.875rem;
+            justify-content: flex-start;
+        }
+
+        .project-card {
+            flex-basis: calc(33.33% - 1.25rem);
+            min-width: 17.5rem;
+            background-color: var(--white);
+            border-radius: var(--boarder-radius);
+            box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            border: 1px solid var(--light-bg-color);
+            transition: transform var(--transpition-speed);
+        }
+
+        .project-card:hover {
+            transform: translateY(-00.3125rem);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 10rem;
+            background-color: var(--light-bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9375rem;
+            color: var(--project-image-text);
+            text-shadow: 0.0625rem rgba(0, 0, 0, 0.8);
+
+        }
+
+        .project-image1 {
+            background-image: url(./imgs/data-tracking.jpg);
+            width: 100%;
+            height: 10rem;
+            background-size: cover;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .project-image2 {
+            background-image: url(./imgs/mobile-app.jpg);
+            width: 100%;
+            height: 10rem;
+            background-size: cover;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .project-image3 {
+            background: url(./imgs/web-design.jpg);
+            width: 100%;
+            height: 10rem;
+            background-size: cover;
+            object-fit: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        .project-details {
+            padding: 1.25rem;
+        }
+
+
+        .project-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.625rem;
+            text-align: left;
+        }
+
+        .project-details p {
+            color: var(--secondary-color);
+            margin-bottom: 0.625rem;
+            font-size: 0.95rem;
+
+        }
+
+        /*version 1*/
+        /*.project-links a {
+            display: inline-block;
+            margin-right: 0.9375rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }*/
+
+        .project-links a {
+            display: inline-block;
+            margin-right: 0.625rem;
+            background-color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            padding: 0.125rem 0.5rem;
+            color: var(--white);
+        }
+
+        /* --- Contact Section --- */
+        #contact {
+            text-align: center;
+            background-color: var(--light-bg-color);
+        }
+
+        #contact p {
+            font-size: 1.2rem;
+            margin-bottom: 1.875rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5625rem;
+            /* Converted from 12px 25px */
+            margin: 0 0.125rem;
+            /* Converted from 15px */
+            border: 0.125rem solid var(--primary-color);
+            /* Converted from 2px */
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: all var(--transition-speed);
+        }
+
+        .contact-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .contact-links a span {
+            margin-right: 0.625rem;
+            font-size: 1.2rem;
+        }
+
+        /* create Footer */
+
+        footer div {
+            text-align: center;
+            padding: 1.25rem;
+            border-top: 0.0625rem solid var(--light-bg-color);
+            background-color: var(--white);
+
+        }
+
+        footer div a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color var(--transpition-speed);
+            margin: 0 0.625rem;
+
+        }
+
+        footer div a:hover {
+            color: var(--accent-color);
+        }
+
+        footer p {
+            margin-top: 0.625rem;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design (Media Queries) */
+        @media (max-width: 56.25rem) {
+            .landing-content h1 {
+                white-space: noward;
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .about-imgage {
+                margin: 0 auto;
+            }
+
+            .info-card-container {
+                flex-direction: column;
+            }
+
+            .experience-container {
+                flex-direction: column;
+            }
+
+            .skill-list li {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 37.5rem) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: large;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
     <!-- ! Start of nav (Main Navigation) -->
-        <!-- Insert HTML syntax here -->
+    <nav>
+        <a href="#landing">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
     <!-- ! End of nav (Main Navigation) -->
 
     <!-- ! Start of Landing section -->
-        <!-- Insert HTML syntax here -->
+    <section id="landing" class="section-padding">
+        <div class="landing-content">
+            <img class="profile-pic-large" src="https://placehold.co/200x200/000000/FFFFFF?text=KS"
+                alt="Profile Picture Placeholder">
+            <p>Hello, I&apos;m</p>
+            <h1>Kim Shee</h1>
+            <p>Junior Full Stack Developer | Mid-career Professional</p>
+            <div class="cta-group">
+                <a class="Contact" href="#contact">Contact Me</a>
+                <a href="#">Download CV</a>
+            </div>
+        </div>
+    </section>
     <!-- ! End of Landing section -->
 
     <!-- ! Start of About Me section -->
-        <!-- Insert HTML syntax here -->
+    <section id="about" class="section-padding">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://placehold.co/600x600/CCCCCC/6c757d?text=My+Portrait"
+                    alt="Placeholder image for portrait">
+            </div>
+
+            <div class="about-text">
+                <h3>"My Passion? Product Development through Class Code..."</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis explicabo debitis deleniti
+                    inventore,
+                    qui nihil, nulla dolore vel eligendi tenetur repudiandae, excepturi in nesciunt nisi harum at beatae
+                    totam praesentium.
+                </p>
+                <div class="info-card-container">
+                    <div class="Info-card">
+                        <h4>Years of Experience: 5+ Years</h4>
+                        <p>Quality Assurance</p>
+                    </div>
+                    <div class="Info-card">
+                        <h4>Education</h4>
+                        <p>BSc. Information Technology</p>
+                    </div>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam illo, sed nesciunt rerum quibusdam
+                    nostrum accusamus alias numquam, ab neque id quas expedita nulla incidunt reprehenderit, cum
+                    deserunt aperiam voluptate.
+                </p>
+            </div>
+        </div>
+    </section>
     <!-- ! End of About Me section -->
 
     <!-- ! Start of Experience section -->
-        <!-- Insert HTML syntax here -->
+    <section id="experience" class="section-padding">
+        <h2>Skills</h2>
+        <div class="experience-container">
+            <div class="experience-card">
+                <h3>Tech Stack</h3>
+
+                <ul class="skill-list">
+                    <li>HTML5 & Semantic Markup</li>
+                    <li>CSS3 (and Bootstrap)</li>
+                    <li>JavfaScript (ES6+)</li>
+                    <li>React</li>
+                    <li>Java</li>
+                    <li>Springboot (Maven)</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Tools and Concepts</h3>
+                <ul class="skill-list">
+                    <li>Version Control (GIt, GItHub</li>
+                    <li>CLient-Server</li>
+                    <li>API Development (Postman)</li>
+                    <li>Unit Testing (Jest/Unit</li>
+                    <li>Visual</li>
+                    <li>InstalliJ</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <!-- ! End of Experience section -->
 
     <!-- ! Start of Projects section -->
-        <!-- Insert HTML syntax here -->
+    <section id="projects" class="section-paadding">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <!-- TODO Card 1 -->
+            <div class="project-card">
+                <div class="project-image project-image1">
+                    Find out more ...
+                </div>
+                <div class="project-details">
+                    <h3>Project 1</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <div class="project-links">
+                        <a href="#">View Demo</a>
+                        <a href="#">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- TODO Card 2 -->
+            <div class="project-card">
+                <div class="project-image project-image2">
+                    Find out more ...
+                </div>
+                <div class="project-details">
+                    <h3>Project 2</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <div class="project-links">
+                        <a href="#">View Demo</a>
+                        <a href="#">GitHub Repo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- TODO Card 3 -->
+            <div class="project-card">
+                <div class=" project-image project-image3">
+                    Find out more ...
+                </div>
+                <iv class="project-details">
+                    <h3>Project 3</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <div class="project-links">
+                        <a href="#">View Demo</a>
+                        <a href="#">GitHub Repo</a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ! End of Projects section -->
 
     <!-- ! Start of Contact section -->
-        <!-- Insert HTML syntax here -->
+    <section id="contact" class="section-paadding">
+        <h2>Contact Me</h2>
+        <p>Let&apos;s connect</p>
+        <!-- TODO links to eamil and to LinkedIn -->
+        <div class="contact-links">
+            <a href="#">
+                <span>✉️</span> Email
+            </a>
+
+            <a href="#">
+                <span>🔗</span> LinkedIn
+            </a>
+        </div>
+
+    </section>
+
+
     <!-- ! End of Contact section -->
 
     <!-- ! Start of Footer -->
-        <!-- Insert HTML syntax here -->
+    <footer>
+        <div>
+            <!-- TODO page links -->
+            <a href="#landing">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="project">Projects</a>
+            <a href="contact">Contact</a>
+        </div>
+        <p>
+            <!-- TODO copywrite info -->
+            &copy; 2026 Kim Shee. All rights reserved.
+        </p>
+    </footer>
     <!-- ! End of Footer -->
-  </body>
+</body>
+
 </html>
