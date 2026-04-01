@@ -465,6 +465,10 @@
                 width: 100%;
             }
 
+            .project-card {
+                flex-basis: 100%;
+            }
+
         }
 
         @media (max-width: 37.5rem) {
